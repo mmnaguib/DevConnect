@@ -1,0 +1,34 @@
+:root{
+    --navbarHeight: 60px;
+    --footerHeight: 60px
+}
+
+*{  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar{
+    height: var(--navbarHeight);
+    box-shadow: 0 0 5px 5px #eaeaea;
+    line-height: var(--navbarHeight);
+    padding: 0 10px;
+    width: 100%;
+}
+
+.sidebar{
+    width: 200px;
+    background: #000;
+    height: calc(100vh - (var(--navbarHeight) + var(--footerHeight)));
+    color: #fff;
+}
+
+.footer{
+    background: #f00;
+    width: 100%;
+    height: var(--footerHeight);
+    line-height: var(--footerHeight)
+}
