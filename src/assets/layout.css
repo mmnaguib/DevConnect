@@ -1,34 +1,162 @@
-:root{
-    --navbarHeight: 60px;
-    --footerHeight: 60px
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap");
+:root {
+  --navbarHeight: 60px;
+  --footerHeight: 60px;
 }
 
-*{  box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  font-family: "Google Sans Code", monospace;
 }
 body {
   margin: 0;
   padding: 0;
+  font-family: "Google Sans Code", monospace;
+}
+.errorMsg {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+}
+.errorInput {
+  border-color: red !important;
+  background-color: #ffe6e6 !important;
+}
+.navbar {
+  height: var(--navbarHeight);
+  box-shadow: 0 0 5px 5px #eaeaea;
+  /* line-height: var(--navbarHeight); */
+  padding: 0 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userDropdown {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1;
+  position: absolute;
+  box-shadow: -6px 7px 3px -3px #f9f9f9;
+  width: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.userDropdownBtn {
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  height: 40px;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar {
+  width: 200px;
+  background: #000;
+  height: calc(100vh - (var(--navbarHeight) + var(--footerHeight)));
+  color: #fff;
 }
 
+/* .footer {
+  background: #f00;
+  width: 100%;
+  height: var(--footerHeight);
+  line-height: var(--footerHeight);
+} */
 
-.navbar{
-    height: var(--navbarHeight);
-    box-shadow: 0 0 5px 5px #eaeaea;
-    line-height: var(--navbarHeight);
-    padding: 0 10px;
-    width: 100%;
+.authForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 352px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background: #fff;
+}
+.authForm h2 {
+  margin-top: 0;
+}
+.authForm .dx-button {
+  border-radius: 25px;
+  margin-bottom: 15px;
+  border-color: #3c4043;
+  color: #3c4043;
+  width: 100%;
+  height: 44px;
+}
+.inputContainer {
+  position: relative;
+}
+.authForm input {
+  padding: 28px 9px 5px !important;
+  font-size: 18px;
+}
+.authForm label {
+  font-size: 1rem;
+  line-height: 1.33333;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  padding: 0 0 0 12px;
+  margin: 0;
+  transition: 0.2s all;
+  transform: translateY(-50%);
+}
+.inputContainer:focus-within label,
+.inputContainer.hasValue label {
+  top: 20%;
+  font-size: 0.8rem;
 }
 
-.sidebar{
-    width: 200px;
-    background: #000;
-    height: calc(100vh - (var(--navbarHeight) + var(--footerHeight)));
-    color: #fff;
+.authForm .dx-button i {
+  margin: 0 10px;
+  font-size: 18px;
+}
+.authForm .dx-button i.fa-apple {
+  font-size: 24px;
+}
+.orBr {
+  color: #0009;
+  font-weight: 400;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+.orBr::after,
+.orBr::before {
+  content: "";
+  background-color: #00000026;
+  height: 1px;
+  width: 44%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
 }
 
-.footer{
-    background: #f00;
-    width: 100%;
-    height: var(--footerHeight);
-    line-height: var(--footerHeight)
+.orBr::before {
+  left: unset;
+  right: 0;
+}
+.registerBtnInLogin {
+  text-align: center;
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+  left: 0;
+}
+.registerBtnInLogin a {
+  color: #0a66c2 !important;
+  text-decoration: none;
 }

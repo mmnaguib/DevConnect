@@ -1,13 +1,22 @@
-export interface IUser{
-    id: number;
-    firstName: string;
-    lastName: string;
-    maidenName: string;
-    age: number;
-    gender: string;
-    email: string;
-    phone: string;
-    username: string;
-    password: string;
-    birthDate: string    
+export interface User {
+  id?: string;
+  firstName?: string;
+  lastName?: string;
+  name?: string;
+  email: string;
+  password: string;
+  avatarUrl?: string;
+  headline?: string;
+  bio?: string;
+  skills?: string[];
+  location?: string;
+  website?: string;
+  github?: string;
+  linkedin?: string;
+  joinDate?: string;
+  lastActive?: string;
+  followersCount?: number;
+  followingCount?: number;
+  connectionsCount?: number;
+  status?: "active" | "inactive" | "banned";
 }
