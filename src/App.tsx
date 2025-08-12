@@ -13,6 +13,8 @@ import Layout from "./component/Layout";
 import LandingPage from "./pages/Home/LandingPage";
 import FeedPage from "./pages/Home/FeedPage";
 import { useTranslation } from "react-i18next";
+import { ToastContainer } from "react-toastify";
+import EditProfile from "./pages/Profile/Edit";
 
 export default function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -74,9 +76,11 @@ export default function App() {
           >
             <Route path="/feed" element={<FeedPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/editProfile" element={<EditProfile />} />
           </Route>
         </Routes>
       </Router>
+      <ToastContainer position="top-center" />
     </div>
   );
 }

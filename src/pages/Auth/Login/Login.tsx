@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../store/authSlice";
 import { AppDispatch, RootState } from "../../../store/store";
 import { Button, TextBox } from "devextreme-react";
 import { Link } from "react-router-dom";
+import notify from "devextreme/ui/notify";
 
 export default function LoginPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,6 +32,24 @@ export default function LoginPage() {
 
     dispatch(login({ email, password }));
   };
+
+  useEffect(() => {
+    if (error) {
+      notify(
+        {
+          message: error,
+          width: "50%",
+          position: {
+            at: "center bottom",
+            my: "center bottom",
+            offset: { y: -20 }, // ينقل الإشعار 20 بكسل لفوق
+          },
+        },
+        "error",
+        3000
+      );
+    }
+  }, [error]);
 
   return (
     <div className="authForm">
@@ -94,7 +113,6 @@ export default function LoginPage() {
           {loading ? "Loading..." : "Sign In"}
         </Button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <div className="registerBtnInLogin">
         New to LinkedIn? <Link to="/register">Join now</Link>

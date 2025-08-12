@@ -58,16 +58,9 @@ body {
 .sidebar {
   width: 200px;
   background: #000;
-  height: calc(100vh - (var(--navbarHeight) + var(--footerHeight)));
+  height: calc(100vh - (var(--navbarHeight)));
   color: #fff;
 }
-
-/* .footer {
-  background: #f00;
-  width: 100%;
-  height: var(--footerHeight);
-  line-height: var(--footerHeight);
-} */
 
 .authForm {
   position: absolute;

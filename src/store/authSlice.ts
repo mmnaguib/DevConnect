@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { User } from "../interface";
+import { IUser } from "../interface";
+import axiosInstance from "../Api/axiosInstance";
 
 interface AuthState {
-  user: User | null;
+  user: IUser | null;
   accessToken: string | null;
   refreshToken: string | null;
   loading: boolean;
@@ -27,10 +28,7 @@ export const login = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
-        credentials
-      );
+      const response = await axios.post("auth/login", credentials);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || "Login failed");
@@ -42,10 +40,7 @@ export const register = createAsyncThunk(
   "auth/register",
   async (data: { email: string; password: string }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/register",
-        data
-      );
+      const response = await axiosInstance.post("auth/register", data);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(
@@ -59,12 +54,9 @@ export const refreshAuthToken = createAsyncThunk(
   "auth/refreshToken",
   async (refreshToken: string, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/refresh-token",
-        {
-          refreshToken,
-        }
-      );
+      const response = await axios.post("auth/refresh-token", {
+        refreshToken,
+      });
       return response.data;
     } catch (error: any) {
       return rejectWithValue(
@@ -128,14 +120,14 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.accessToken = action.payload.token;
         state.refreshToken = action.payload.refreshToken;
-        localStorage.setItem(
-          "auth",
-          JSON.stringify({
-            user: state.user,
-            token: state.accessToken,
-            refreshToken: state.refreshToken,
-          })
-        );
+        // localStorage.setItem(
+        //   "auth",
+        //   JSON.stringify({
+        //     user: state.user,
+        //     token: state.accessToken,
+        //     refreshToken: state.refreshToken,
+        //   })
+        // );
       })
       .addCase(register.rejected, (state, action) => {
         state.loading = false;
