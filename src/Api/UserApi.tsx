@@ -3,22 +3,24 @@ import { IUser } from "../interface";
 import axiosInstance from "./axiosInstance";
 import { RootState } from "../store/store";
 
-const { accessToken } = useSelector((state: RootState) => state.auth);
-
-const UserData = {
-  getUserData: async () => {
-    return await axiosInstance.get("auth/me");
+const UserApi = {
+  getUserData: async (accessToken: string) => {
+    return await axiosInstance.get("auth/me", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
   },
 
-  updateUserProfile: async (updates: IUser) => {
+  updateUserProfile: async (accessToken: string, updates: FormData) => {
     try {
-      const res = await axiosInstance.put("auth/profile", updates, {
+      const res = await axiosInstance.put("auth/update", updates, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
-      return res.data.user;
+      return res;
     } catch (error: any) {
       console.error(
         "Failed to update user profile:",
@@ -29,4 +31,4 @@ const UserData = {
   },
 };
 
-export default UserData;
+export default UserApi;

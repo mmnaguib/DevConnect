@@ -19,4 +19,10 @@ export interface IUser {
   followingCount?: number;
   connectionsCount?: number;
   status?: "active" | "inactive" | "banned";
+  education?: string;
+  phone?: string;
+  company?: string;
+  birthDate?: Date | string;
+  address?: string;
+  jobType?: string;
 }

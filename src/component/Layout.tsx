@@ -10,7 +10,7 @@ const Layout = () => {
       <Navbar />
       <div style={{ display: "flex" }}>
         <Sidebar />
-        <div style={{ flex: 1, padding: "20px" }}>
+        <div style={{ flex: 1 }}>
           <Outlet />
         </div>
       </div>

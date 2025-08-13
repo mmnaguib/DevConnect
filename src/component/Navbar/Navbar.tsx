@@ -33,7 +33,21 @@ const Navbar = () => {
   }, []);
   return (
     <div className="navbar">
-      <div>0</div>
+      <div style={{ display: "flex" }}>
+        <i className="fa-brands fa-linkedin fa-2x"></i>
+        <ul className="navLinks">
+          <li>
+            <Link to="/feed">
+              <i className="fa-solid fa-home"></i>
+            </Link>
+          </li>
+          <li>
+            <Link to="/chat">
+              <i className="fa-solid fa-chat"></i>
+            </Link>
+          </li>
+        </ul>
+      </div>
 
       <div style={{ position: "relative" }}>
         <i

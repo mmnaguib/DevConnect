@@ -32,6 +32,13 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.navLinks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
 .userDropdown {
   background: #fff;
   padding: 10px;
@@ -152,4 +159,45 @@ body {
 .registerBtnInLogin a {
   color: #0a66c2 !important;
   text-decoration: none;
+}
+.editUserForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.editUserForm > div {
+  flex-grow: 1;
+}
+
+.coverImage {
+  width: 100%;
+  height: 300px;
+  max-height: 300px;
+  background: #ddd;
+}
+.userImage {
+  position: absolute;
+  bottom: -25%;
+  left: 25px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  width: 200px;
+  height: 200px;
+}
+.userImage img {
+  border-radius: 50%;
+}
+.userData {
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+.userData h4 {
+  margin: 0;
+}
+.editProfileBtn {
+  position: absolute;
+  right: 25px;
+  bottom: -15%;
 }

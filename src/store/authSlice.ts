@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { IUser } from "../interface";
 import axiosInstance from "../Api/axiosInstance";
 
@@ -28,19 +27,20 @@ export const login = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await axios.post("auth/login", credentials);
+      const response = await axiosInstance.post("auth/login", credentials);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || "Login failed");
     }
   }
 );
-
 export const register = createAsyncThunk(
   "auth/register",
-  async (data: { email: string; password: string }, { rejectWithValue }) => {
+  async (formData: FormData, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("auth/register", data);
+      const response = await axiosInstance.post("auth/register", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       return response.data;
     } catch (error: any) {
       return rejectWithValue(
@@ -54,7 +54,7 @@ export const refreshAuthToken = createAsyncThunk(
   "auth/refreshToken",
   async (refreshToken: string, { rejectWithValue }) => {
     try {
-      const response = await axios.post("auth/refresh-token", {
+      const response = await axiosInstance.post("auth/refresh-token", {
         refreshToken,
       });
       return response.data;
